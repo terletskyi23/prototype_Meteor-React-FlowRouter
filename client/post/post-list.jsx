@@ -1,27 +1,21 @@
 PostsList = React.createClass({
-  getPostData(){
-    var postsData = [
-      {
-        title: 'Introducing Telescope',
-        url: 'http://sachagreif.com/introducing-telescope/'
-      },
-      {
-        title: 'Meteor',
-        url: 'http://meteor.com'
-      },
-      {
-        title: 'The Meteor Book',
-        url: 'http://themeteorbook.com'
-      }
-    ];
-    return postsData;
+  //also need
+  mixins: [ReactMeteorData],
+  // this is the special function for subscribe on publication
+  getMeteorData() {
+    var handle = Meteor.subscribe('posts');
+
+    return {
+      ready: handle.ready(),
+      posts: Posts.find()
+    }
   },
   render() {
     return (
       <div id="main" className="row-fluid">
-        <h3>Pooooooossssssstttttttssss</h3>
+        <h3>Posts:</h3>
         {
-          this.getPostData().map(function(el){
+          this.data.posts.map(function(el){
             return <PostItem post={el}/>
           })
         }

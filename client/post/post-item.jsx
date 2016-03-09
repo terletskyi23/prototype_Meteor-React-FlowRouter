@@ -9,7 +9,7 @@ PostItem = React.createClass({
     return (
       <div className="post">
         <div className="post-content">
-          <h3><a href={this.domain()}>{this.title()}</a><span>domain</span></h3>
+          <h3><a href={this.domain()}>{this.title()}</a><span>{this.domain()}</span></h3>
         </div>
       </div>
     );
