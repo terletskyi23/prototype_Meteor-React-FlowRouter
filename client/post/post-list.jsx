@@ -16,7 +16,7 @@ PostsList = React.createClass({
         <h3>Posts:</h3>
         {
           this.data.posts.map(function(el){
-            return <PostItem post={el}/>
+            return <PostItem key={el._id} post={el}/>
           })
         }
       </div>

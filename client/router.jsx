@@ -1,11 +1,13 @@
 FlowRouter.route('/', {
   action() {
+    name: 'postsList',
     ReactLayout.render(MainLayout, {content: <PostsList/>});
   }
 });
 
-FlowRouter.route('/:postId', {
+FlowRouter.route('/posts/:_id', {
   action(params) {
-    ReactLayout.render(MainLayout, {content: <BlogPost {...params} />});
+    name: 'postPage',
+    ReactLayout.render(MainLayout, {content: <PostPage/>});
   }
 });
